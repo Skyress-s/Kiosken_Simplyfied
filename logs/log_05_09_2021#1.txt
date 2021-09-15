@@ -1,0 +1,29 @@
+itemname,price,kontant,Vipps
+
+solo,20,0,2
+pepsi,20,0,0
+pepsimax,20,0,0
+7up,20,0,2
+fersken,25,0,0
+gueava,25,0,0
+firkloover,10,0,4
+eventyrSjokolade,10,0,0
+japp,10,0,6
+twix,10,0,0
+kjerlighet,4,0,5
+docBlaa,15,0,0
+docSvart,15,0,0
+CPaprika,15,0,3
+CSalt,15,0,0
+Csalt&Pepper,15,0,0
+CSourOnion,15,0,0
+G&B,25,0,0
+mentos,10,0,0
+Tips,1,0,13
+
+Total Vipps of session is:
+258
+Total kontant of session is:
+0
+Total of kontant and Vipps is:
+258
