@@ -4,8 +4,6 @@ from main import *
 from tkinter import filedialog, Text
 import os
 
-
-test = 1
 #defining som colors
 backgroundColor = GetConfig(5)
 foreground = GetConfig(6)
