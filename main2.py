@@ -1,6 +1,9 @@
 from datetime import datetime
 import os
 
+
+items = {1,2,3,4,5,6}
+
 def GetConfig(index = 0):
     file = open("config.txt", "r")
     file = file.readlines()
