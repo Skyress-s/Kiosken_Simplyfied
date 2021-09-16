@@ -1,12 +1,13 @@
 from datetime import datetime
 import os
+from enum import Enum
+
+ItemsPath = 'Items.txt'
 
 currentCart = 0
 TotalSession = 0
 actualItems = 0
 
-
-items = {1,2,3,4,5,6,7,8,9,0,11,12,13,14,15,16,17}
 
 def GetConfig(index = 0):
     file = open("config.txt", "r")
@@ -32,5 +33,35 @@ def ClearCart():
 def SerializeItems():
     s = 1
 
-def LoadFromData():
-    l = 1
+def LoadItemsFromData():
+    file = open(ItemsPath, 'r')
+    items = file.readlines() # reads all the lines and passes them to an array
+    items = [item.replace('\n', '') for item in items]
+
+    for x in range(0, len(items)):
+        app = items[x] # gets the element from the item list
+        app = app.split(',') # spilts it into an array with     ['name', 'price']
+        app[1] = int(app[1]) # converts price to int            ['name', price]
+        items[x] = app
+
+    return items
+
+def AddNewItemToItemsFile(name = "", price = 10):
+    file = open(ItemsPath, 'a')
+    file.write('\n' + name + ',' + price)
+
+def CheckIfFileExits(string = ""):
+    try:
+        open(string, "x")
+        return False
+    except Exception:
+        return True
+
+
+
+class CurrentPaymentMethod(Enum):
+    Vipps = 1
+    Kontant = 2
+    Kort = 3
+
+print(CurrentPaymentMethod.Kort.value)

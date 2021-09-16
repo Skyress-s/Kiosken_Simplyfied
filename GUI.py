@@ -94,6 +94,7 @@ currentItems = tk.Label(frame, text="helwo,\n nå har du åpnet appen, \ndu tryk
                         "gjenstand,pris", width=25, height=30, fg="white", bg=groupingColor)
 currentItems.place( anchor="s", rely=0.95, relx=0.5, relheight=0.8)
 
+# adds the item buttons
 for i in range(0, len(items)):
     padding = 10
 
