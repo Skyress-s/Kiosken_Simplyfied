@@ -3,7 +3,7 @@ import os
 from enum import Enum
 # all global items are defined here
 ItemsPath = 'Items.txt'
-
+b_createdNewLogFile = False
 currentCart = [] # has this form currentcart[index][currentPaymentMethod] ie. index 0 = solo 1 = pepsi, cPM it with slott
 # each index has three slots, one for each payment type
 currentSession = []
@@ -40,8 +40,8 @@ def AddToSession():
     items = LoadItemsFromData()
 
     for i in range(0, len(items)):
-        currentSession[i][GetCurrentPaymentMethod().value] = cart[i]
-    print(currentSession)
+        currentSession[i][GetCurrentPaymentMethod().value] += cart[i]
+    #print(currentSession)
 
 
 def SerializeSession():
@@ -56,33 +56,80 @@ def SerializeSession():
         os.mkdir(path)
     except:
         print("folder alleready exists")
-
+    #creates nearly full file name
     logFileName = "log_" + str(datetime.today().strftime("%d_%m_%Y"))
+    #checks if the file alleready exsits
+
     logs = []
     for file in os.listdir(path):
         if file.startswith(logFileName):
             file = file[:-4]
+
             file = file.split("#")
             file = int(file[1])
-            logs.append(file)
 
+            logs.append(file)
+    # sorts out the highest num in the files with the same name as this one
+    highestnum = 0
+    for num in logs:
+        if num > highestnum:
+            highestnum = num
+
+    # creates a new file name based on if it alleready have done it this session
+    global b_createdNewLogFile
+    if b_createdNewLogFile == False:
+        logFileName += "#" + str(highestnum + 1) + ".txt"
+        b_createdNewLogFile = True
+    else:
+        logFileName += "#" + str(highestnum) + ".txt"
+
+    path = (os.path.join(path, logFileName))
+
+    # print(path)
+
+    def addNumOfSpaces(num=0):
+
+        spaces = ""
+        for i in range(0, num):
+            spaces += " "
+
+        return spaces
+
+    file = open(path, 'w')
 
     # writes the string to write to the file
     s = ""
+    spacing = 35
+
     for j in range(0, len(currentSession)):
-        s += items[j][0] + ','
+        add = ""
+        add += items[j][0] + ','
+        add += addNumOfSpaces(spacing - len(add))
+
         for i in range(0, len(currentSession[j])):
-            print(currentSession[j][i])
-            s += str(currentSession[j][i]) + ','
-        s += '\n'
+
+            add += str(currentSession[j][i]) + ','
+        add += '\n'
+        s += add
+
+    # adds the sum ans so on from the session
+    s += "\n\n\n"
+
+    def SumOfOnePaymentMethod(num = 0):
+        result = 0
+        for i in range(0, len(items)):
+            result += currentSession[i][num] * items[i][1]
+        return result
+
+    s += "Total for Vipps           : " + str(SumOfOnePaymentMethod(0)) + '\n'
+    s += "Total for Kontant         : " + str(SumOfOnePaymentMethod(1)) + '\n'
+    s += "Total for Kort            : " + str(SumOfOnePaymentMethod(2)) + '\n' + '\n'
+    s += "Total for entire session      : " + str(SumOfOnePaymentMethod(0) + SumOfOnePaymentMethod(1) + SumOfOnePaymentMethod(2))
 
 
+    file.write(s)
+    file.close()
 
-
-
-
-
-SerializeSession()
 
 
 def InitAndResetCart():

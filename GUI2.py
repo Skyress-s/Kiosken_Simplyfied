@@ -157,6 +157,7 @@ def PlaceNextCustomerutton():
         AddToSession()
         InitAndResetCart()
         WriteToCurrentItemsView()
+        SerializeSession()
     BNextCostomer = tk.Button(frame, text="Next costumer", bd=0, width=20, height=3, fg="white", bg=GetConfig(2),
                               command=lambda: OnClick())
     #BNextCostomer.pack()
