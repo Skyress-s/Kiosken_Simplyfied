@@ -1,0 +1,36 @@
+Amount                             Vipps,Kontant,Kort
+
+
+solo                               0,5,0,        total: 5
+pepsi                              0,0,0,        total: 0
+pepsimax                           0,0,0,        total: 0
+7up                                0,0,0,        total: 0
+fersken                            0,0,0,        total: 0
+gueava                             0,0,0,        total: 0
+firkloover                         0,0,0,        total: 0
+eventyrSjokolade                   0,0,0,        total: 0
+japp                               0,0,0,        total: 0
+twix                               0,0,0,        total: 0
+kjerlighet                         0,0,0,        total: 0
+docBlaa                            0,0,0,        total: 0
+docSvart                           0,0,0,        total: 0
+CPaprika                           0,0,0,        total: 0
+CSalt                              0,0,0,        total: 0
+Csalt&Pepper                       0,0,0,        total: 0
+CSourOnion                         0,0,0,        total: 0
+G&B                                0,0,0,        total: 0
+mentos                             0,0,0,        total: 0
+Tips                               0,0,0,        total: 0
+solooooo                           0,0,0,        total: 0
+jegliker                           0,0,0,        total: 0
+object1                            0,0,0,        total: 0
+test                               0,0,0,        total: 0
+adawda awd                         0,0,0,        total: 0
+
+
+
+Total for Vipps           : 0
+Total for Kontant         : 100
+Total for Kort            : 0
+
+Total for entire session      : 100
