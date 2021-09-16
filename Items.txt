@@ -20,3 +20,4 @@ mentos,10
 Tips,1
 solooooo,25
 jegliker,30
+object1,15

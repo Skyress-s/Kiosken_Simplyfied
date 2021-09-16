@@ -6,9 +6,13 @@ ItemsPath = 'Items.txt'
 
 currentCart = [] # has this form currentcart[index][currentPaymentMethod] ie. index 0 = solo 1 = pepsi, cPM it with slott
 # each index has three slots, one for each payment type
+currentSession = []
+
 
 TotalSession = 0
 actualItems = 0
+
+
 
 def LoadItemsFromData():
     file = open(ItemsPath, 'r')
@@ -23,12 +27,27 @@ def LoadItemsFromData():
 
     return items
 
+def InitCurrentSession():
+    global currentSession
+    currentCart.clear()
+    for i in range(0, len(LoadItemsFromData())):
+        currentCart.append([0,0,0])
+    print(currentCart)
+InitCurrentSession()
+
+def AddToSession():
+    cart = GetCurrentCart()
+    items = LoadItemsFromData()
+
+    for item in range(0, len(items)):
+
+
 def InitAndResetCart():
     global currentCart
     currentCart.clear()
     for i in range(0, len(LoadItemsFromData())):
         currentCart.append(0)
-    print(currentCart)
+    # print(currentCart)
 
 InitAndResetCart()
 
