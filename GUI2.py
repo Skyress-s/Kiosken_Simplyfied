@@ -154,7 +154,9 @@ ClearCartButton()
 def PlaceNextCustomerutton():
 
     def OnClick():
-        t =1
+        AddToSession()
+        InitAndResetCart()
+        WriteToCurrentItemsView()
     BNextCostomer = tk.Button(frame, text="Next costumer", bd=0, width=20, height=3, fg="white", bg=GetConfig(2),
                               command=lambda: OnClick())
     #BNextCostomer.pack()
