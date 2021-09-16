@@ -1,12 +1,12 @@
 collum lentgh=12
-
+DefulatToVippsOnNextCostumer=1
 NextCustomerButtonColor=#6C298D
 ClearButtonColor=#1C198D
 GeneralButtonColor=#6C698D
 BackgroundColor=#0b2033
 ForegroundColor=#415A77
 GroupingColor=#778DA9
-            #paymentMethod
+            #paymentMethodColor
 VippsColor=#AC25E2
 KontantColor=#8AB4F8
 KortColor=#A5D6A7

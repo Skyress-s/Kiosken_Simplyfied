@@ -9,7 +9,7 @@ groupingColor = GetConfig(7)
 GeneralButtonColor= GetConfig(4)
 
 #----------------
-LoadItemsFromData()
+
 
 #--------------
 
@@ -87,7 +87,9 @@ currentItems = tk.Label(frame, text="helwo,\n nå har du åpnet appen, \ndu tryk
                         "skriv in nye items \n på denne måten\n"+
                         "gjenstand,pris", width=25, height=30, fg="white", bg=groupingColor)
 currentItems.place( anchor="s", rely=0.95, relx=0.5, relheight=0.8)
-#CurrentItemsView()
+
+
+
 
 def WriteToCurrentItemsView():
     items = LoadItemsFromData()
@@ -111,31 +113,41 @@ def WriteToCurrentItemsView():
 
     currentItems.config(text=s)
 
-
-def PaymentMethodButton():
-
-    def OnClick(button = tk.Button):
-        if  GetCurrentPaymentMethod() == PaymentMethod.Vipps:
-            SetCurrentPaymentMethod(PaymentMethod.Kontant)
-            button.config(text = "Kontant")
-            button.config(bg=GetConfig(10))
-
-        elif GetCurrentPaymentMethod() == PaymentMethod.Kontant:
-            SetCurrentPaymentMethod(PaymentMethod.Kort)
-            button.config(text = "Kort")
-            button.config(bg=GetConfig(11))
-
-        elif GetCurrentPaymentMethod() == PaymentMethod.Kort:
-            SetCurrentPaymentMethod(PaymentMethod.Vipps)
-            button.config(text = "Vipps")
-            button.config(bg=GetConfig(9))
+# ---------------------PAYMENT METHOD BUTTON---------------------------
+#def PaymentMethodButton():
 
 
+def OnClick(button = tk.Button):
+    if  GetCurrentPaymentMethod() == PaymentMethod.Vipps:
+        KontantPayMet()
 
-    BToggleVipps = tk.Button(frame, text="Vipps", bd=0, width=20, height=3, fg="white", bg=GetConfig(9),
-                             command=lambda: OnClick(BToggleVipps))
-    BToggleVipps.place(anchor="ne", relx=0.49, rely=0.03)
-PaymentMethodButton()
+    elif GetCurrentPaymentMethod() == PaymentMethod.Kontant:
+        KortPayMet()
+
+    elif GetCurrentPaymentMethod() == PaymentMethod.Kort:
+        VippsPayMet()
+
+
+BToggleVipps = tk.Button(frame, text="Vipps", bd=0, width=20, height=3, fg="white", bg=GetConfig(9),
+                         command=lambda: OnClick(BToggleVipps))
+BToggleVipps.place(anchor="ne", relx=0.49, rely=0.03)
+#PaymentMethodButton()
+
+def VippsPayMet():
+    SetCurrentPaymentMethod(PaymentMethod.Vipps)
+    BToggleVipps.config(text="Vipps")
+    BToggleVipps.config(bg=GetConfig(9))
+
+def KontantPayMet():
+    SetCurrentPaymentMethod(PaymentMethod.Kontant)
+    BToggleVipps.config(text="Kontant")
+    BToggleVipps.config(bg=GetConfig(10))
+
+def KortPayMet():
+    SetCurrentPaymentMethod(PaymentMethod.Kort)
+    BToggleVipps.config(text="Kort")
+    BToggleVipps.config(bg=GetConfig(11))
+
 
 
 def ClearCartButton():
@@ -158,6 +170,10 @@ def PlaceNextCustomerutton():
         InitAndResetCart()
         WriteToCurrentItemsView()
         SerializeSession()
+        # logic for resetting paymentMethod or not
+        if int(GetConfig(1)) == 1:
+            VippsPayMet()
+
     BNextCostomer = tk.Button(frame, text="Next costumer", bd=0, width=20, height=3, fg="white", bg=GetConfig(2),
                               command=lambda: OnClick())
     #BNextCostomer.pack()

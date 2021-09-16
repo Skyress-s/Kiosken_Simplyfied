@@ -56,7 +56,9 @@ def SerializeSession():
         os.mkdir(path)
     except:
         print("folder alleready exists")
-    #creates nearly full file name
+
+
+    #creates nearly full / base for file name
     logFileName = "log_" + str(datetime.today().strftime("%d_%m_%Y"))
     #checks if the file alleready exsits
 
@@ -85,7 +87,7 @@ def SerializeSession():
 
     path = (os.path.join(path, logFileName))
 
-    # print(path)
+   # defining func to add number of spaces
 
     def addNumOfSpaces(num=0):
 
@@ -95,24 +97,34 @@ def SerializeSession():
 
         return spaces
 
+    # -------------------- writes the string to write to the file
+
     file = open(path, 'w')
 
-    # writes the string to write to the file
-    s = ""
     spacing = 35
+    s = ""
+    s += "Amount                             Vipps,Kontant,Kort"
+    s += "\n\n\n"
 
     for j in range(0, len(currentSession)):
         add = ""
-        add += items[j][0] + ','
+        add += items[j][0]
         add += addNumOfSpaces(spacing - len(add))
 
         for i in range(0, len(currentSession[j])):
 
             add += str(currentSession[j][i]) + ','
-        add += '\n'
-        s += add
 
-    # adds the sum ans so on from the session
+        # add the sum of the total amount for all items
+        add += "        total: " + str(currentSession[j][0] + currentSession[j][1] + currentSession[j][2])
+
+        add += '\n' # new line
+        s += add # add it to the string file
+
+        # add the sum of total amount of that item
+
+
+
     s += "\n\n\n"
 
     def SumOfOnePaymentMethod(num = 0):
@@ -166,11 +178,6 @@ def GetConfig(index = 0):
 def NextCustomer():
     nextc = 1
     #goes to next customer
-
-
-
-
-
 
 
 def AddNewItemToItemsFile(name = "", price = 10):
