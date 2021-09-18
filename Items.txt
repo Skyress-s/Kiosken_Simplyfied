@@ -18,3 +18,4 @@ CSourOnion,15
 G&B,25
 mentos,10
 Tips,1
+ost,100

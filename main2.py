@@ -101,7 +101,7 @@ def SerializeSession():
 
     file = open(path, 'w')
 
-    spacing = 35
+    spacing = 25
     s = ""
     s += "Amount                             Vipps,Kontant,Kort"
     s += "\n\n\n"
@@ -110,6 +110,8 @@ def SerializeSession():
         add = ""
         add += items[j][0]
         add += addNumOfSpaces(spacing - len(add))
+        add += str(items[j][1])
+        add += addNumOfSpaces((spacing*2) - len(add))
 
         for i in range(0, len(currentSession[j])):
 
