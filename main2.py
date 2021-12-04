@@ -105,7 +105,7 @@ def SerializeSession():
     s = ""
     s += "Amount                             Vipps,Kontant,Kort"
     s += "\n\n\n"
-
+#dawdawd
     for j in range(0, len(currentSession)):
         add = ""
         add += items[j][0]
